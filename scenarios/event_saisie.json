@@ -1,0 +1,15 @@
+{
+  "type": "new_patient",
+  "patient": {
+    "id": "P4",
+    "age": 65,
+    "heart_rate": 140,
+    "systolic_bp": 80,
+    "spo2": 94,
+    "temperature": 38.5,
+    "resp_rate": 30,
+    "symptoms": [
+      "chestpain"
+    ]
+  }
+}

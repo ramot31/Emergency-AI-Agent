@@ -1,0 +1,14 @@
+{
+  "doctors": [{"id": "D1", "specialty": "Cardiology"}, {"id": "D2", "specialty": "General"}],
+  "nurses": [{"id": "N1"}],
+  "beds": [{"id": "E1", "type": "Emergency"}, {"id": "E2", "type": "Emergency"}, {"id": "ICU1", "type": "ICU"}],
+  "rooms": [{"id": "R1"}],
+  "patients": [
+    {"id": "P1", "age": 72, "heart_rate": 132, "systolic_bp": 84, "spo2": 87, "temperature": 39.0, "resp_rate": 26,
+     "symptoms": ["ChestPain", "ShortnessOfBreath"],
+     "history": [{"hr": 105, "bp": 110, "spo2": 95}, {"hr": 112, "bp": 105, "spo2": 93}, {"hr": 118, "bp": 98, "spo2": 91},
+                 {"hr": 125, "bp": 90, "spo2": 89}, {"hr": 132, "bp": 84, "spo2": 87}]},
+    {"id": "P2", "age": 45, "heart_rate": 88, "systolic_bp": 120, "spo2": 97, "temperature": 38.4, "symptoms": ["Fever"]},
+    {"id": "P3", "age": 30, "heart_rate": 80, "systolic_bp": 118, "spo2": 98, "temperature": 36.8, "symptoms": ["AbdominalPain"]}
+  ]
+}

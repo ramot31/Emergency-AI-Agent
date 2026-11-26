@@ -1,0 +1,2 @@
+{"type": "new_patient", "patient": {"id": "P4", "age": 65, "heart_rate": 140, "systolic_bp": 80, "spo2": 85, "temperature": 38.5, "resp_rate": 30, "symptoms": ["ChestPain", "Confusion"],
+ "history": [{"hr": 110, "bp": 105, "spo2": 94}, {"hr": 125, "bp": 92, "spo2": 90}, {"hr": 140, "bp": 80, "spo2": 85}]}}
