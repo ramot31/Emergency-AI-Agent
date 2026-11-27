@@ -312,3 +312,16 @@ class KnowledgeBase:
             "derived_count": len(new_derived),
             "trace": trace,
         }
+
+
+def reason(facts: Iterable[tuple[Any, ...]]) -> tuple[set[tuple[Any, ...]], list[str]]:
+    """Point d'entrée compatible avec le contrat `stubs.reason(facts)` de `agent.py`.
+
+    Entrée : liste de faits (tuples produits par `state_to_facts` + `ML_Risk`/`DL_Risk`).
+    Sortie : `(faits_derives, trace)` où `faits_derives` est un ensemble de tuples et
+    `trace` une liste de lignes explicatives.
+    """
+    kb = KnowledgeBase()
+    kb.load_state_facts(facts)
+    derived, trace = kb.recompute()
+    return derived, trace
