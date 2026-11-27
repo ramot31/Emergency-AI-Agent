@@ -97,3 +97,53 @@ def export_search_requirements(kb: KnowledgeBase, only_waiting: bool = True) -> 
 
 
 __all__ = ["export_requirements", "export_search_requirements", "reason"]
+
+
+def run_bloc2_demo() -> None:
+    """Démonstration exécutable complète du Bloc 2 sur le scénario P1/P2/P3 + événements."""
+    import stubs as S
+    from agent import Agent
+    from facts import state_to_facts
+    from interface import load_scenario
+    from resolution import resolve_query
+
+    print("=== DEMO BLOC 2 (simulation, sans usage médical réel) ===")
+    state = load_scenario("scenarios/scenario_complet.json")
+    facts = state_to_facts(state)
+    for p in state.waiting_patients():
+        ml_lvl, ml_p = S.ml_predict(p)
+        facts.append(("ML_Risk", p.id, ml_lvl, ml_p))
+        dl = S.dl_predict(p.history)
+        if dl:
+            facts.append(("DL_Risk", p.id, dl[0], dl[1]))
+
+    kb = KnowledgeBase()
+    kb.load_state_facts(facts)
+    _, trace = kb.recompute()
+    print("\n--- Trace chaînage avant + pont ML/DL ---")
+    for line in trace:
+        print(" ", line)
+
+    print("\n--- Export exigences Membre 5 ---")
+    print(export_requirements(kb))
+
+    print("\n--- Résolution par réfutation : RequiresICU(P1)? ---")
+    res = resolve_query(("RequiresICU", "P1"), facts)
+    print(res.format_trace(only_proof_path=True))
+
+    print("\n--- Résolution par réfutation : RequiresICU(P2)? ---")
+    res_p2 = resolve_query(("RequiresICU", "P2"), facts)
+    print(res_p2.format_trace(only_proof_path=True))
+
+    print("\n--- Exécution orchestrateur Agent (Membre 1) avec moteur Membre 2 ---")
+    agent = Agent(load_scenario("scenarios/scenario_complet.json"), reasoner=reason)
+    agent.cycle()
+    agent.execute_next()
+    agent.execute_next()
+    agent.handle_event({"type": "resource_unavailable", "id": "ICU1"})
+    agent.run_plan()
+    print("Etat final :", agent.state.summary())
+
+
+if __name__ == "__main__":
+    run_bloc2_demo()
