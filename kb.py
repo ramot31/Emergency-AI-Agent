@@ -179,11 +179,16 @@ class KnowledgeBase:
         """Recalcule le pont ML/DL puis le chaînage avant jusqu'au point fixe."""
         from inference import forward_chain
         from ml_dl_bridge import apply_ml_dl_bridge
+        from risk_judgment import trace_rule_ml_judgment
 
-        self.trace_log.clear()
+        # La modération ML dépend des faits actuels : recalculer les dérivés
+        # évite de conserver une hausse devenue obsolète après mise à jour.
+        self.clear_derived()
         d_bridge, tr_bridge = apply_ml_dl_bridge(self)
         d_chain, tr_chain = forward_chain(self)
-        return (d_bridge | d_chain), (tr_bridge + tr_chain)
+        judgment_trace = trace_rule_ml_judgment(self)
+        self.trace_log.extend(judgment_trace)
+        return (d_bridge | d_chain), (tr_bridge + tr_chain + judgment_trace)
 
     def _retract_matching(self, predicate: str, patient_id: str) -> set[tuple[Any, ...]]:
         """Retire tous les faits de base d'un patient correspondant à `predicate`."""
