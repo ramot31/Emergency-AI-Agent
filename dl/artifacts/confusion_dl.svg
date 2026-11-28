@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="363" height="333">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="181" y="24" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold">Matrice confusion (LSTM)</text>
+<text x="126" y="45" text-anchor="middle" font-family="sans-serif" font-size="11">Low</text>
+<text x="188" y="45" text-anchor="middle" font-family="sans-serif" font-size="11">Medium</text>
+<text x="250" y="45" text-anchor="middle" font-family="sans-serif" font-size="11">High</text>
+<text x="312" y="45" text-anchor="middle" font-family="sans-serif" font-size="11">Critical</text>
+<text x="87" y="90" text-anchor="end" font-family="sans-serif" font-size="11">Low</text>
+<rect x="95" y="55" width="62" height="62" fill="rgb(70,75,255)" stroke="#ccc"/>
+<text x="126" y="91" text-anchor="middle" font-family="sans-serif" font-size="13">110</text>
+<rect x="157" y="55" width="62" height="62" fill="rgb(230,235,255)" stroke="#ccc"/>
+<text x="188" y="91" text-anchor="middle" font-family="sans-serif" font-size="13">9</text>
+<rect x="219" y="55" width="62" height="62" fill="rgb(245,250,255)" stroke="#ccc"/>
+<text x="250" y="91" text-anchor="middle" font-family="sans-serif" font-size="13">0</text>
+<rect x="281" y="55" width="62" height="62" fill="rgb(245,250,255)" stroke="#ccc"/>
+<text x="312" y="91" text-anchor="middle" font-family="sans-serif" font-size="13">0</text>
+<text x="87" y="152" text-anchor="end" font-family="sans-serif" font-size="11">Medium</text>
+<rect x="95" y="117" width="62" height="62" fill="rgb(237,242,255)" stroke="#ccc"/>
+<text x="126" y="153" text-anchor="middle" font-family="sans-serif" font-size="13">5</text>
+<rect x="157" y="117" width="62" height="62" fill="rgb(216,221,255)" stroke="#ccc"/>
+<text x="188" y="153" text-anchor="middle" font-family="sans-serif" font-size="13">18</text>
+<rect x="219" y="117" width="62" height="62" fill="rgb(241,246,255)" stroke="#ccc"/>
+<text x="250" y="153" text-anchor="middle" font-family="sans-serif" font-size="13">2</text>
+<rect x="281" y="117" width="62" height="62" fill="rgb(245,250,255)" stroke="#ccc"/>
+<text x="312" y="153" text-anchor="middle" font-family="sans-serif" font-size="13">0</text>
+<text x="87" y="214" text-anchor="end" font-family="sans-serif" font-size="11">High</text>
+<rect x="95" y="179" width="62" height="62" fill="rgb(245,250,255)" stroke="#ccc"/>
+<text x="126" y="215" text-anchor="middle" font-family="sans-serif" font-size="13">0</text>
+<rect x="157" y="179" width="62" height="62" fill="rgb(241,246,255)" stroke="#ccc"/>
+<text x="188" y="215" text-anchor="middle" font-family="sans-serif" font-size="13">2</text>
+<rect x="219" y="179" width="62" height="62" fill="rgb(200,205,255)" stroke="#ccc"/>
+<text x="250" y="215" text-anchor="middle" font-family="sans-serif" font-size="13">28</text>
+<rect x="281" y="179" width="62" height="62" fill="rgb(241,246,255)" stroke="#ccc"/>
+<text x="312" y="215" text-anchor="middle" font-family="sans-serif" font-size="13">2</text>
+<text x="87" y="276" text-anchor="end" font-family="sans-serif" font-size="11">Critical</text>
+<rect x="95" y="241" width="62" height="62" fill="rgb(245,250,255)" stroke="#ccc"/>
+<text x="126" y="277" text-anchor="middle" font-family="sans-serif" font-size="13">0</text>
+<rect x="157" y="241" width="62" height="62" fill="rgb(245,250,255)" stroke="#ccc"/>
+<text x="188" y="277" text-anchor="middle" font-family="sans-serif" font-size="13">0</text>
+<rect x="219" y="241" width="62" height="62" fill="rgb(232,237,255)" stroke="#ccc"/>
+<text x="250" y="277" text-anchor="middle" font-family="sans-serif" font-size="13">8</text>
+<rect x="281" y="241" width="62" height="62" fill="rgb(155,160,255)" stroke="#ccc"/>
+<text x="312" y="277" text-anchor="middle" font-family="sans-serif" font-size="13">56</text>
+</svg>
