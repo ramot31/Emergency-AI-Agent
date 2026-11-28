@@ -11,6 +11,7 @@ avec seuils de confiance paramétrables et résolution tracée des conflits ML/D
 from __future__ import annotations
 
 from dataclasses import dataclass
+import math
 from typing import Any
 
 from kb import Justification, KnowledgeBase
@@ -74,6 +75,13 @@ def _passes_threshold(source: str, level: str, prob: float, t: BridgeThresholds)
     if level == "Medium":
         return prob >= t.medium_threshold
     return False
+
+
+def moderate_ml_only_level(ml_level: str, rule_level: str | None) -> str:
+    """ML High seul devient Medium provisoire, sans abaisser Critical ou les règles."""
+    if ml_level == "High" and rule_level is None:
+        return "Medium"
+    return ml_level
 
 
 def resolve_ml_dl_conflict(
@@ -164,11 +172,27 @@ def apply_ml_dl_bridge(
 
     for f in kb.all_facts_sorted():
         if len(f) == 4 and f[0] == "ML_Risk":
+            if (f[2] not in LEVEL_RANK or not isinstance(f[3], (int, float))
+                    or isinstance(f[3], bool) or not math.isfinite(f[3]) or not 0 <= f[3] <= 1):
+                trace.append(f"[BRIDGE_ML_INVALID] Prédiction ignorée : {f}")
+                continue
             ml_by_patient[str(f[1])] = f  # type: ignore[assignment]
         elif len(f) == 4 and f[0] == "DL_Risk":
+            if (f[2] not in LEVEL_RANK or not isinstance(f[3], (int, float))
+                    or isinstance(f[3], bool) or not math.isfinite(f[3]) or not 0 <= f[3] <= 1):
+                trace.append(f"[BRIDGE_DL_INVALID] Prédiction ignorée : {f}")
+                continue
             dl_by_patient[str(f[1])] = f  # type: ignore[assignment]
 
     patients = sorted(set(ml_by_patient) | set(dl_by_patient))
+    rule_facts = set()
+    if any(pid not in dl_by_patient for pid in ml_by_patient):
+        from inference import forward_chain
+
+        rule_kb = KnowledgeBase(rules=kb.rules)
+        rule_kb.assert_facts(f for f in kb.base_facts if f[0] not in {"ML_Risk", "DL_Risk"})
+        forward_chain(rule_kb)
+        rule_facts = rule_kb.facts
     for pid in patients:
         ml_fact = ml_by_patient.get(pid)
         dl_fact = dl_by_patient.get(pid)
@@ -227,14 +251,19 @@ def apply_ml_dl_bridge(
             src_name, fact = ("DL", dl_fact) if dl_fact is not None else ("ML", ml_fact)
             assert fact is not None
             _, _, lvl, prob = fact
-            pred = LEVEL_TO_PREDICATE.get(lvl)
-            if pred and _passes_threshold(src_name, lvl, prob, t):
+            accepted = _passes_threshold(src_name, lvl, prob, t)
+            rule_level = next((name for name in ("Critical", "High", "Medium")
+                               if (LEVEL_TO_PREDICATE[name], pid) in rule_facts), None)
+            effective_level = moderate_ml_only_level(lvl, rule_level) if src_name == "ML" and accepted else lvl
+            pred = LEVEL_TO_PREDICATE.get(effective_level)
+            if pred and accepted:
                 out_fact = (pred, pid)
                 j = Justification(
                     rule_id=f"BRIDGE_{src_name}",
                     premises=(fact,),
                     substitution_str=f"{{p/{pid}}}",
-                    note=f"prob={prob:.2f}",
+                    note=(f"score={prob:.2f}" + (" ; High ML sans corroboration logique : Medium provisoire"
+                                                 if effective_level != lvl else "")),
                 )
                 if kb.add_derived_fact(out_fact, j):
                     derived.add(out_fact)

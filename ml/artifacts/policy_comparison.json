@@ -1,0 +1,39 @@
+{
+  "sample": 1111,
+  "excluded_missing_vitals": 89,
+  "limitations": "Jeu synthétique déjà consulté, du même générateur ; compare le vrai pont et le vrai chaînage avec ML seul, sans DL ni allocation ; données vitales manquantes exclues. Absence de conclusion distincte de Low. Non clinique.",
+  "policies": {
+    "rules": {
+      "critical_total": 37,
+      "critical_not_marked_critical": 0,
+      "noncritical_marked_critical": 320,
+      "low_medium_total": 687,
+      "low_medium_marked_high_or_critical": 88,
+      "high_critical_total": 424,
+      "high_critical_below_high": 8,
+      "no_risk_conclusion": 517
+    },
+    "legacy": {
+      "critical_total": 37,
+      "critical_not_marked_critical": 0,
+      "noncritical_marked_critical": 322,
+      "low_medium_total": 687,
+      "low_medium_marked_high_or_critical": 92,
+      "high_critical_total": 424,
+      "high_critical_below_high": 4,
+      "no_risk_conclusion": 393,
+      "urgent_evaluations": 512
+    },
+    "moderated": {
+      "critical_total": 37,
+      "critical_not_marked_critical": 0,
+      "noncritical_marked_critical": 322,
+      "low_medium_total": 687,
+      "low_medium_marked_high_or_critical": 89,
+      "high_critical_total": 424,
+      "high_critical_below_high": 5,
+      "no_risk_conclusion": 393,
+      "urgent_evaluations": 509
+    }
+  }
+}

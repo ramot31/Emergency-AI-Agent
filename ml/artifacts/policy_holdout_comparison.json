@@ -1,0 +1,40 @@
+{
+  "dataset": "C:\\Users\\victus\\Desktop\\Projects\\projet khalgui\\Emergency-AI-Agent\\ml\\data\\policy_holdout_synthetic.csv",
+  "sample": 1100,
+  "excluded_missing_vitals": 100,
+  "limitations": "Même générateur synthétique ; compare le vrai pont et le vrai chaînage avec ML seul, sans DL ni allocation ; données vitales manquantes exclues. Absence de conclusion distincte de Low. Non clinique.",
+  "policies": {
+    "rules": {
+      "critical_total": 27,
+      "critical_not_marked_critical": 0,
+      "noncritical_marked_critical": 282,
+      "low_medium_total": 695,
+      "low_medium_marked_high_or_critical": 86,
+      "high_critical_total": 405,
+      "high_critical_below_high": 16,
+      "no_risk_conclusion": 532
+    },
+    "legacy": {
+      "critical_total": 27,
+      "critical_not_marked_critical": 0,
+      "noncritical_marked_critical": 287,
+      "low_medium_total": 695,
+      "low_medium_marked_high_or_critical": 90,
+      "high_critical_total": 405,
+      "high_critical_below_high": 11,
+      "no_risk_conclusion": 392,
+      "urgent_evaluations": 484
+    },
+    "moderated": {
+      "critical_total": 27,
+      "critical_not_marked_critical": 0,
+      "noncritical_marked_critical": 287,
+      "low_medium_total": 695,
+      "low_medium_marked_high_or_critical": 88,
+      "high_critical_total": 405,
+      "high_critical_below_high": 13,
+      "no_risk_conclusion": 392,
+      "urgent_evaluations": 480
+    }
+  }
+}
