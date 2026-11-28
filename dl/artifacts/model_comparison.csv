@@ -1,0 +1,4 @@
+model,accuracy,f1_macro,critical_recall,critical_precision,det_accuracy,det_f1_macro,det_critical_recall
+lstm,0.8833,0.8312,0.875,0.9655,0.8333,0.7073,0.875
+gru,0.8625,0.8172,0.8594,0.9821,0.8421,0.7231,0.8594
+baseline_rf_last_step,0.8417,0.7487,0.8906,0.9194,0.8158,0.7342,0.8906
