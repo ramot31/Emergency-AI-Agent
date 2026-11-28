@@ -4,14 +4,40 @@ from interface import apply_event
 import stubs as S
 
 
+def _import_ml():
+    from ml.predict_ml import ml_predict          # Membre 3 (module réel, non modifié)
+    return ml_predict
+
+
+def _import_dl():
+    from dl.predict_dl import dl_predict          # Membre 4 (module réel, non modifié)
+    return dl_predict
+
+
+def _load_real(name, importer, fallback):
+    """Charge la fonction réelle d'un module. Si le module est inutilisable (torch ou
+    scikit-learn absent...), on retombe sur le stub en le signalant clairement."""
+    try:
+        return importer(), "réel"
+    except Exception as e:
+        print(f"[AVERTISSEMENT] {name} réel indisponible ({type(e).__name__}: {e}) -> stub utilisé")
+        return fallback, "stub"
+
+
 class Agent:
-    def __init__(self, state, ml=S.ml_predict, dl=S.dl_predict, reasoner=S.reason,
+    def __init__(self, state, ml=None, dl=None, reasoner=S.reason,
                  searcher=S.search_allocation, planner=S.make_plan):
-        self.state, self.ml, self.dl = state, ml, dl
+        """ml / dl : fonctions injectables ; None = modules réels (ml/ et dl/), avec repli sur les stubs."""
+        self.state = state
+        ml_src = dl_src = "injecté"
+        if ml is None: ml, ml_src = _load_real("ML", _import_ml, S.ml_predict)
+        if dl is None: dl, dl_src = _load_real("DL", _import_dl, S.dl_predict)
+        self.ml, self.dl = ml, dl
         self.reasoner, self.searcher, self.planner = reasoner, searcher, planner
         self.plan, self.plan_version, self.step = [], None, 0
         self.completed = set()          # patients dont le plan est entièrement exécuté
         self.journal = []
+        self.log("INIT", f"ML = {ml_src} | DL = {dl_src}")
 
     def log(self, etape, msg):
         line = f"[{etape}] {msg}"
