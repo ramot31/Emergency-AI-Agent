@@ -8,9 +8,15 @@ RISK_LEVELS = ["Low", "Medium", "High", "Critical"]
 LABEL_TO_INDEX = {label: idx for idx, label in enumerate(RISK_LEVELS)}
 
 # Variables temporelles alignées strictement sur Patient.snapshot() (environment.py)
+# - hr   : fréquence cardiaque / Heart Rate (battements par minute, bpm)
+# - bp   : pression artérielle systolique / Blood Pressure (mmHg)
+# - spo2 : saturation en oxygène dans le sang / SpO2 (%)
 VITAL_COLUMNS = ["hr", "bp", "spo2"]
 
-# Features par pas de temps : 3 constantes brutes + 3 variations cumulées depuis t0 + 3 deltas depuis t-1
+# Features calculées à chaque pas de temps t :
+# - hr, bp, spo2                : valeurs brutes à l'instant t
+# - delta_*_t0                  : variation cumulée depuis la 1re mesure (valeur(t) - valeur(t0))
+# - delta_*_step                : variation entre deux mesures consécutives (valeur(t) - valeur(t-1))
 TEMPORAL_FEATURE_COLUMNS = [
     "hr",
     "bp",
@@ -33,10 +39,11 @@ TRAJECTORY_TYPES = [
 MIN_SEQ_LEN = 3
 MAX_SEQ_LEN = 8
 
+# Bornes physiologiques réalistes (min, max) utilisées pour éviter des valeurs absurdes lors de la simulation
 VITAL_BOUNDS = {
-    "hr": (45, 190),
-    "bp": (55, 210),
-    "spo2": (70, 100),
+    "hr": (45, 190),     # bpm : entre 45 (bradycardie) et 190 (tachycardie sévère)
+    "bp": (55, 210),     # mmHg : entre 55 (hypotension sévère) et 210 (hypertension sévère)
+    "spo2": (70, 100),   # % : entre 70 % (hypoxie grave) et 100 % (normal)
 }
 
 PACKAGE_DIR = Path(__file__).resolve().parent
