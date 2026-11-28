@@ -1,0 +1,133 @@
+{
+  "n": 1200,
+  "classes": [
+    "Critical",
+    "High",
+    "Low",
+    "Medium"
+  ],
+  "dataset": "jeu synthétique complémentaire déjà consulté, même générateur",
+  "notice": "Analyse descriptive uniquement ; pas de calibration clinique ni de sélection de seuil indépendante. Les seuils décrivent le ML seul et ne reproduisent pas les règles ou le pont.",
+  "multiclass_brier_sum_of_squared_errors": 0.29967623520842407,
+  "winning_score_bins": [
+    {
+      "score_min_inclus": 0.0,
+      "score_max_exclu": 0.4,
+      "inclut_un_si_max": false,
+      "effectif": 7,
+      "score_moyen": 0.38516480582177837,
+      "proportion_correcte": 0.5714285714285714
+    },
+    {
+      "score_min_inclus": 0.4,
+      "score_max_exclu": 0.6,
+      "inclut_un_si_max": false,
+      "effectif": 113,
+      "score_moyen": 0.5325961169721918,
+      "proportion_correcte": 0.6017699115044248
+    },
+    {
+      "score_min_inclus": 0.6,
+      "score_max_exclu": 0.8,
+      "inclut_un_si_max": false,
+      "effectif": 367,
+      "score_moyen": 0.6910411798111176,
+      "proportion_correcte": 0.5940054495912807
+    },
+    {
+      "score_min_inclus": 0.8,
+      "score_max_exclu": 0.9,
+      "inclut_un_si_max": false,
+      "effectif": 24,
+      "score_moyen": 0.8585985199449743,
+      "proportion_correcte": 0.5
+    },
+    {
+      "score_min_inclus": 0.9,
+      "score_max_exclu": 1.0,
+      "inclut_un_si_max": true,
+      "effectif": 689,
+      "score_moyen": 0.9641509260745641,
+      "proportion_correcte": 0.9433962264150944
+    }
+  ],
+  "thresholds": [
+    {
+      "threshold": 0.5,
+      "accepted": 1193,
+      "accepted_fraction": 0.9941666666666666,
+      "critical_total": 38,
+      "critical_not_accepted_as_critical": 6,
+      "noncritical_accepted_as_critical": 40,
+      "elevated_total": 454,
+      "elevated_not_accepted_as_elevated": 74,
+      "low_medium_accepted_as_elevated": 13
+    },
+    {
+      "threshold": 0.6,
+      "accepted": 1080,
+      "accepted_fraction": 0.9,
+      "critical_total": 38,
+      "critical_not_accepted_as_critical": 9,
+      "noncritical_accepted_as_critical": 25,
+      "elevated_total": 454,
+      "elevated_not_accepted_as_elevated": 91,
+      "low_medium_accepted_as_elevated": 11
+    },
+    {
+      "threshold": 0.7,
+      "accepted": 814,
+      "accepted_fraction": 0.6783333333333333,
+      "critical_total": 38,
+      "critical_not_accepted_as_critical": 10,
+      "noncritical_accepted_as_critical": 21,
+      "elevated_total": 454,
+      "elevated_not_accepted_as_elevated": 96,
+      "low_medium_accepted_as_elevated": 11
+    },
+    {
+      "threshold": 0.75,
+      "accepted": 799,
+      "accepted_fraction": 0.6658333333333334,
+      "critical_total": 38,
+      "critical_not_accepted_as_critical": 10,
+      "noncritical_accepted_as_critical": 21,
+      "elevated_total": 454,
+      "elevated_not_accepted_as_elevated": 96,
+      "low_medium_accepted_as_elevated": 11
+    },
+    {
+      "threshold": 0.8,
+      "accepted": 713,
+      "accepted_fraction": 0.5941666666666666,
+      "critical_total": 38,
+      "critical_not_accepted_as_critical": 10,
+      "noncritical_accepted_as_critical": 21,
+      "elevated_total": 454,
+      "elevated_not_accepted_as_elevated": 96,
+      "low_medium_accepted_as_elevated": 11
+    },
+    {
+      "threshold": 0.9,
+      "accepted": 689,
+      "accepted_fraction": 0.5741666666666667,
+      "critical_total": 38,
+      "critical_not_accepted_as_critical": 13,
+      "noncritical_accepted_as_critical": 10,
+      "elevated_total": 454,
+      "elevated_not_accepted_as_elevated": 113,
+      "low_medium_accepted_as_elevated": 11
+    },
+    {
+      "threshold": 0.95,
+      "accepted": 343,
+      "accepted_fraction": 0.28583333333333333,
+      "critical_total": 38,
+      "critical_not_accepted_as_critical": 16,
+      "noncritical_accepted_as_critical": 4,
+      "elevated_total": 454,
+      "elevated_not_accepted_as_elevated": 122,
+      "low_medium_accepted_as_elevated": 11
+    }
+  ]
+}

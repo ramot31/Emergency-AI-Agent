@@ -1,0 +1,83 @@
+{
+  "source": "C:\\Users\\victus\\Desktop\\Projects\\projet khalgui\\Emergency-AI-Agent\\ml\\data\\independent_synthetic_evaluation.csv",
+  "seed": 20261129,
+  "generator": "mêmes règles que l'entraînement ; proportions différentes dues au minimum de 240 profils proches de P1",
+  "warning": "Jeu synthétique distinct, non clinique et issu du même générateur ; non représentatif d'une population réelle.",
+  "n_samples": 1200,
+  "exact_rows_in_development_data": 0,
+  "accuracy": 0.7933333333333333,
+  "classification_report": {
+    "Low": {
+      "precision": 0.9018789144050104,
+      "recall": 0.8571428571428571,
+      "f1-score": 0.8789420142421159,
+      "support": 504.0
+    },
+    "Medium": {
+      "precision": 0.5638629283489096,
+      "recall": 0.7479338842975206,
+      "f1-score": 0.6429840142095915,
+      "support": 242.0
+    },
+    "High": {
+      "precision": 0.9359756097560976,
+      "recall": 0.7379807692307693,
+      "f1-score": 0.8252688172043011,
+      "support": 416.0
+    },
+    "Critical": {
+      "precision": 0.4444444444444444,
+      "recall": 0.8421052631578947,
+      "f1-score": 0.5818181818181818,
+      "support": 38.0
+    },
+    "accuracy": 0.7933333333333333,
+    "macro avg": {
+      "precision": 0.7115404742386156,
+      "recall": 0.7962906934572604,
+      "f1-score": 0.7322532568685476,
+      "support": 1200.0
+    },
+    "weighted avg": {
+      "precision": 0.8310471200566558,
+      "recall": 0.7933333333333333,
+      "f1-score": 0.8033415212356898,
+      "support": 1200.0
+    }
+  },
+  "confusion_matrix_labels": [
+    "Low",
+    "Medium",
+    "High",
+    "Critical"
+  ],
+  "confusion_matrix": [
+    [
+      432,
+      71,
+      1,
+      0
+    ],
+    [
+      46,
+      181,
+      14,
+      1
+    ],
+    [
+      1,
+      69,
+      307,
+      39
+    ],
+    [
+      0,
+      0,
+      6,
+      32
+    ]
+  ],
+  "critical_errors_by_predicted_class": {
+    "High": 6
+  }
+}

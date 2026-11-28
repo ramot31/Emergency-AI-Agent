@@ -1,0 +1,8 @@
+threshold,accepted,accepted_fraction,critical_total,critical_not_accepted_as_critical,noncritical_accepted_as_critical,elevated_total,elevated_not_accepted_as_elevated,low_medium_accepted_as_elevated
+0.5,1193,0.9941666666666666,38,6,40,454,74,13
+0.6,1080,0.9,38,9,25,454,91,11
+0.7,814,0.6783333333333333,38,10,21,454,96,11
+0.75,799,0.6658333333333334,38,10,21,454,96,11
+0.8,713,0.5941666666666666,38,10,21,454,96,11
+0.9,689,0.5741666666666667,38,13,10,454,113,11
+0.95,343,0.28583333333333333,38,16,4,454,122,11

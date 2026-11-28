@@ -1,0 +1,7 @@
+age,heart_rate,systolic_bp,spo2,temperature,resp_rate,symptoms,risk_level,predicted_risk
+95.0,150.0,84.0,86.0,38.4,26.0,ChestPain|Confusion|Fever|Nausea,Critical,High
+85.0,146.0,82.0,87.0,39.0,31.0,ShortnessOfBreath|Confusion,Critical,High
+78.0,125.0,77.0,89.0,39.1,28.0,ChestPain|ShortnessOfBreath|AbdominalPain|Headache|Nausea,Critical,High
+69.0,125.0,70.0,89.0,37.3,24.0,ChestPain|Confusion|Fever|Nausea,Critical,High
+64.0,121.0,77.0,90.0,38.5,26.0,ChestPain|Confusion|Nausea|Weakness,Critical,High
+95.0,112.0,74.0,91.0,39.3,30.0,ChestPain|ShortnessOfBreath|Confusion,Critical,High
